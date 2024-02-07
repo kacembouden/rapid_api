@@ -6,6 +6,10 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return 'working'
+
 @app.route("/api/ohlc/<symbol>/<timeframe>" , methods = ['GET'])
 def ohlc(symbol,timeframe):
     tf = {'MN1': mt5.TIMEFRAME_MN1,'W1': mt5.TIMEFRAME_W1,'D1': mt5.TIMEFRAME_D1,'H4': mt5.TIMEFRAME_H4,
