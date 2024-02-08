@@ -33,6 +33,12 @@ def ohlc(symbol,timeframe):
         year_t, month_t, day_t, hour_t = to[0] , to[1], to[2], to[3]
         btc_rates = mt5.copy_rates_range(symbol, tf[timeframe], datetime(int(year_f),int(month_f),int(day_f),int(hour_f)),
                                         datetime(int(year_t),int(month_t),int(day_t),int(hour_t)))
+    else:
+        return make_response(
+                jsonify(
+                    {"message": "Add the range of date to your url in this format:\n /api/ohlc/EURUSD/D1?from=2024-12-23-00&to=2024-12-25-00 \n Or to get the last N bars in this format:\n /api/ohlc/EURUSD/D1?from="}
+                ),
+            )
 
     rates_frame = pd.DataFrame(btc_rates)
 
@@ -68,6 +74,12 @@ def tick(symbol):
 
         btc_rates = mt5.copy_ticks_range(symbol, datetime(int(year_f),int(month_f),int(day_f),int(hour_f)),
                                         datetime(int(year_t),int(month_t),int(day_t),int(hour_t)) , mt5.COPY_TICKS_ALL)
+    else:
+        return make_response(
+                jsonify(
+                    {"message": "Add the range of date to your url in this format:\n /api/ohlc/EURUSD/D1?from=2024-12-23-00&to=2024-12-25-00 \n Or to get the last N bars in this format:\n /api/ohlc/EURUSD/D1?from="}
+                ),
+            )
 
 
     rates_frame = pd.DataFrame(btc_rates)
