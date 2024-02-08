@@ -1,4 +1,4 @@
-from flask import Flask ,jsonify, request
+from flask import Flask ,jsonify, request, make_response
 import MetaTrader5 as mt5
 from json import loads, dumps
 import pandas as pd
