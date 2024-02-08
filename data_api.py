@@ -4,10 +4,6 @@ from json import loads, dumps
 import pandas as pd
 from datetime import datetime
 
-from OpenSSL import SSL
-context = SSL.Context(SSL.PROTOCOL_TLSv1_2)
-context.use_privatekey_file('server.key')
-context.use_certificate_file('server.crt')
 
 app = Flask(__name__)
 
@@ -101,4 +97,4 @@ if __name__ == '__main__':
  
     # run() method of Flask class runs the application 
     # on the local development server.
-    app.run(host = "0.0.0.0", port = 443,debug=True, ssl_context=context)
+    app.run(host = "0.0.0.0", port = 443)
